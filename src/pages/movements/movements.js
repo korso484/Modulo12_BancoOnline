@@ -1,5 +1,5 @@
 import { history } from '../../core/router';
-import { getMovements, getMovementsById } from './movements.api';
+import { getMovementsById } from './movements.api';
 import { addMovementRows } from './movements.helpers';
 import { onSetValues } from '../../common/helpers'
 import { mapMovementListFromApiToViewModel } from './movements.mappers';
