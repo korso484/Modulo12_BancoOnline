@@ -108,5 +108,45 @@
       "accountId": "3"
     }
   ],
-  "transfer": []
+  "transfer": [
+    {
+      "sourceIban": "ES91 2100 0418 4502 0005 1332",
+      "targetIban": "ES7921000813610123456789",
+      "beneficiary": "Dani",
+      "amount": "300",
+      "concept": "Ahorro",
+      "day": "2",
+      "month": "09",
+      "year": "2020",
+      "execDate": "2020-09-2",
+      "id": 1
+    },
+    {
+      "sourceIban": "ES66 2100 0418 4012 3456 7891",
+      "targetIban": "ES1000492352082414205416",
+      "beneficiary": "Paco",
+      "amount": "150",
+      "concept": "Comunidad2",
+      "day": "22",
+      "month": "12",
+      "year": "2020",
+      "emailBeneficiary": "admin@email.com",
+      "execDate": "2020-12-22",
+      "id": 2
+    },
+    {
+      "sourceIban": "ES66 2100 0418 4012 3456 7891",
+      "targetIban": "ES1000492352082414205416",
+      "beneficiary": "Ana",
+      "amount": "200",
+      "concept": "Regalo",
+      "observations": "Cumple",
+      "day": "11",
+      "month": "03",
+      "year": "2021",
+      "emailBeneficiary": "ana@email.com",
+      "execDate": "2021-03-11",
+      "id": 3
+    }
+  ]
 }

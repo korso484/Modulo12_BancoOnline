@@ -18,7 +18,7 @@ let transfer = {
     day: '',
     month: '',
     year: '',
-    execDate: `${day}${month}${year}`,
+    execDate: '',
     emailBeneficiary: '',
 
 };
@@ -51,7 +51,8 @@ onUpdateField('iban', event => {
         ...transfer,
         targetIban: value,
     };
-    formValidation.validateField('iban', transfer.sourceIban).then(result => {
+
+    formValidation.validateField('iban', transfer.targetIban).then(result => {
         onSetError('iban', result);
     });
 });
@@ -62,10 +63,6 @@ onUpdateField('name', event => {
         ...transfer,
         beneficiary: value,
     };
-
-    formValidation.validateField('iban', transfer.sourceIban).then(result => {
-        onSetError('name', result);
-    });
 });
 
 onUpdateField('amount', event => {
@@ -75,7 +72,7 @@ onUpdateField('amount', event => {
         amount: value,
     };
 
-    formValidation.validateField('iban', transfer.sourceIban).then(result => {
+    formValidation.validateField('amount', transfer.amount).then(result => {
         onSetError('amount', result);
     });
 });
@@ -87,7 +84,7 @@ onUpdateField('concept', event => {
         concept: value,
     };
 
-    formValidation.validateField('iban', transfer.sourceIban).then(result => {
+    formValidation.validateField('concept', transfer.concept).then(result => {
         onSetError('concept', result);
     });
 });
@@ -105,7 +102,11 @@ onUpdateField('day', event => {
     transfer = {
         ...transfer,
         day: value,
-    }
+    };
+
+    formValidation.validateField('day', transfer.day).then(result => {
+        onSetError('day', result);
+    });
 });
 
 onUpdateField('month', event => {
@@ -113,7 +114,11 @@ onUpdateField('month', event => {
     transfer = {
         ...transfer,
         month: value,
-    }
+    };
+
+    formValidation.validateField('month', transfer.month).then(result => {
+        onSetError('month', result);
+    });
 });
 
 onUpdateField('year', event => {
@@ -121,17 +126,24 @@ onUpdateField('year', event => {
     transfer = {
         ...transfer,
         year: value,
-    }
+    };
+
+    formValidation.validateField('year', transfer.year).then(result => {
+        onSetError('year', result);
+    });
 });
 
 const getExecDate = () => {
-    const newDate = `${transfer.day}/${transfer.month}/${transfer.year}`;
+    const newDate = `${transfer.year}-${transfer.month}-${transfer.day}`;
     transfer = {
         ...transfer,
         execDate: newDate,
     };
-};
 
+    formValidation.validateField('date-error', transfer.execDate).then(result => {
+        onSetError('date-error', result);
+    });
+};
 
 
 onUpdateField('email', event => {
@@ -147,16 +159,18 @@ onUpdateField('email', event => {
 });
 
 
-
 onSubmitForm('transfer-button', event => {
     getExecDate();
+    console.log(transfer);
+
     formValidation.validateForm(transfer).then(result => {
+        console.log(result);
         onSetFormErrors(result);
         if (result.succeeded) {
-            console.log(result);
+            sendTransfer(transfer);
         }
     })
-    console.log(transfer);
+
 });
 
 
